@@ -162,9 +162,6 @@ section.site-section {
 	padding-bottom: 30px;
 	border-bottom: 1px solid rgb(220, 220, 220);
 }
-section:not(.site-section) {
-	margin-bottom: 40px;
-}
 
 
 
@@ -200,7 +197,8 @@ section:not(.site-section) {
   background-image: url("https://twemoji.maxcdn.com/svg/1f44d.svg"); }
   .twa-key {
   background-image: url("https://twemoji.maxcdn.com/svg/1f511.svg"); }
-
+.twa-point-down {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f447.svg"); }
 
 
 
@@ -209,17 +207,33 @@ section:not(.site-section) {
 
 
 
-.hero-header {
+.hero-header,
+.demo-section {
 	background-size: cover;
     background-repeat: no-repeat;
-
-    background-image: url('img/khaled.jpg');
     background-position: center;
-
     height: 100vh;
     position: relative;
+    margin-bottom: 0;
+}
 
+.hero-header {
+	background-image: url('img/khaled.jpg');
+}
 
+.demo-section {
+    background-image: url('img/bg.png');
+}
+
+.video-container {
+	margin: 0 auto;
+	width: 90%;
+	max-width: 800px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
 .site-header {
@@ -232,7 +246,7 @@ section:not(.site-section) {
 	max-width: 600px;
 	text-align: center;
 	border: 10px solid #ffd700;
-	background-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(255, 255, 255, 0.5);
 	padding: 20px;
 	color: #ffd700;
 }
@@ -243,6 +257,22 @@ section:not(.site-section) {
 	right: 20px;
 }
 
+
+nav.down {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	font-size: 2rem;
+
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #ffd700;
+	cursor: pointer;
+}
 
 .current-browser-supports {
 	display: none;
@@ -259,6 +289,3 @@ section:not(.site-section) {
 	}
 	
 }
-
-
-

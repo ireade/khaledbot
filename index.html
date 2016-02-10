@@ -43,20 +43,32 @@
 	      data-via="ireaderinokun"
 	      data-related="ireaderinokun"> Tweet </a>
 	     </p>
+
+	     <nav class="down"></nav>
 		
+	</section>
+
+
+	<section class="demo-section">
+		
+		<div class="video-container">
+			
+		
+		<video class="demo" width="100%" autoplay loop>
+		    <source src="khaledbot.mp4" type="video/mp4">
+		    <img src="img/khlaedbot.gif" alt="KhaledBot Demo">
+		</video>
+		</div>
+
+		<nav class="down"></nav>
+			
 	</section>
 
 	<div class="container">
 		
 	
 	
-	<section class="site-section">
-		
-		[video/gif ehre]
-		
-			
 	
-	</section>
 
 	<section class="site-section">
 		<h2>Add to Slack</h2>
@@ -89,9 +101,25 @@
 	</div>
 
 
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>
     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
     </script> 
+
+    <script>
+    	$('nav').on('click', function() {
+
+		  if ( $(this).hasClass('down') ) {
+		    var movePos = $(window).scrollTop() + $(window).height();
+		  }
+		  if ( $(this).hasClass('up') ) {
+		    var movePos = $(window).scrollTop() - $(window).height();
+		  }
+
+		  $('html, body').animate({
+		    scrollTop: movePos
+		  }, 1000);
+		})
+    </script>
 </body>
 </html>
