@@ -1,0 +1,264 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Box sizing */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Clearfix */
+
+.cf:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+
+
+
+
+/* ---------------*/
+
+
+
+html {
+    font-size: 62.5%;
+
+}
+body {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    font-family: 'Playfair Display', serif;
+    color: rgb(50, 50, 50);
+
+    cursor: url("key.png"), auto;
+    cursor: -webkit-image-set( url('img/key1x.png') 1x, url('img/key2x.png') 2x ), auto;
+
+}
+a {
+    color: inherit; 
+}
+
+small {
+	font-size: 1rem;
+	display: block;
+	text-align: right;
+}
+strong {
+	font-weight: 600;
+}
+
+h1 {
+	font-size: 7rem;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+
+
+
+p.subheading {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	display: block;
+}
+
+p {
+	margin-bottom: 15px;
+}
+
+h2 {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+
+h3 {
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+blockquote {
+	display: block;
+	font-style: italic;
+	padding: 5px 20px;
+	margin-bottom: 30px;
+	border-left: 5px solid #ffd700;
+}
+
+.uo {
+	color: rgb(180, 180, 180);
+}
+
+
+.container {
+	margin: 50px auto;
+	width: 90%;
+	max-width: 800px;
+}
+
+.site-footer {
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		margin: 50px auto;
+	}
+}
+
+
+
+section.site-section {
+	margin-bottom: 50px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid rgb(220, 220, 220);
+}
+section:not(.site-section) {
+	margin-bottom: 40px;
+}
+
+
+
+
+.not-supported {
+	color: red;
+	text-decoration: underline;
+}
+
+
+
+
+/* Twemoji Awesome - http://ellekasai.github.io/twemoji-awesome/ */
+ .twa {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 1em 1em; }
+
+.twa-sob {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f62d.svg"); }
+ .twa-dancers {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f46f.svg"); }
+ .twa-punch {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f44a.svg"); }
+ .twa-thumbsdown {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f44e.svg"); }
+  .twa-thumbsup {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f44d.svg"); }
+  .twa-key {
+  background-image: url("https://twemoji.maxcdn.com/svg/1f511.svg"); }
+
+
+
+
+
+/* */
+
+
+
+.hero-header {
+	background-size: cover;
+    background-repeat: no-repeat;
+
+    background-image: url('img/khaled.jpg');
+    background-position: center;
+
+    height: 100vh;
+    position: relative;
+
+
+}
+
+.site-header {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 90%;
+	max-width: 600px;
+	text-align: center;
+	border: 10px solid #ffd700;
+	background-color: rgba(255, 255, 255, 0.3);
+	padding: 20px;
+	color: #ffd700;
+}
+
+.twitter-share {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+
+.current-browser-supports {
+	display: none;
+}
+
+@supports ( display: block ) {
+
+	.current-browser-supports {
+		display: block;
+	}
+
+	.current-browser-doesnt-support {
+		display: none;
+	}
+	
+}
+
+
+
