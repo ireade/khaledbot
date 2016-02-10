@@ -53,7 +53,6 @@ var majorKeys = [
   "Find peace, life is like a water fall, you've gotta flow.",
   "Let's see what Chef Dee got that they don't want us to eat.",
   "Lion!",
-  "I'm up to something.",
   "Surround yourself with angels.",
   "Major key, don't fall for the trap, stay focused. It's the ones closest to you that want to see you fail.",
   "The key to more success is to get a massage once a week, very important, major key, cloth talk.",
