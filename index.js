@@ -81,7 +81,8 @@ var majorKeys = [
 
 var replyRandomKey = function(bot, message) {
 	var index = Math.floor(Math.random() * majorKeys.length);
-	var majorKey = "> " + majorKeys[index];
+  var majorKey = majorKeys[index];
+  //var majorKey = "> " + majorKeys[index];
 	bot.reply(message, majorKey);
 }
 
@@ -106,23 +107,57 @@ var personaliseIntro = function(userID) {
 
 
 controller.on("direct_message", function(bot, message) {
-	replyRandomKey(bot, message);
+
+  if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
+
+    var reply = "Hello. I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen closely..."
+    bot.reply(message, reply);
+
+    replyRandomKey(bot, message);
+
+  } else if ( message.text.indexOf("help") > -1 ) {
+
+    var reply = "Looks like you need help. This is what I'm here for. You can send me any messages, and I'll reply with some major :key: :key:"
+    bot.reply(message, reply);
+
+  } else {
+
+    var index = Math.floor(Math.random() * majorKeys.length);
+    var majorKey = majorKeys[index];
+    bot.reply(message, majorKey);
+
+  }
+	
 })
 
 controller.on("bot_channel_join", function(bot, message) {
-	var intro = "I'm here! Major :key: :key: :key: for the channel"
+	var intro = "I have arrived! Major :key: :key: :key: for the channel"
 	bot.reply(message, intro);
 	replyRandomKey(bot, message);
 })
 
 controller.on("direct_mention", function(bot, message) {
-	var intro = personaliseIntro(message.user);
+
+  var intro;
+  if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
+    intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!"
+  } else {
+    intro = personaliseIntro(message.user);
+  }
+
 	bot.reply(message, intro);
 	replyRandomKey(bot, message);
 })
 
 controller.on("mention", function(bot, message) {
-	var intro = personaliseIntro(message.user);
+	
+  var intro;
+  if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
+    intro = "Hello <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!"
+  } else {
+    intro = personaliseIntro(message.user);
+  }
+
 	bot.reply(message, intro);
 	replyRandomKey(bot, message);
 })
@@ -130,21 +165,27 @@ controller.on("mention", function(bot, message) {
 
 
 controller.on("user_channel_join", function(bot, message) {
-	var intro = "Welcome <@"+message.user+">! Major :key: for success in this channel - ";
+	var intro = "Welcome <@"+message.user+">! Major :key: for success in this channel";
 	bot.reply(message, intro);
 	replyRandomKey(bot, message);
 })
 
 controller.on("user_group_join", function(bot, message) {
-	var intro = "Welcome <@"+message.user+">! Major :key: for success in this group -";
+	var intro = "Welcome <@"+message.user+">! Major :key: for success in this group";
 	bot.reply(message, intro);
 	replyRandomKey(bot, message);
 })
 
 
-
-controller.hears(["major key", ":key:", 'key'], ["direct_message","direct_mention","mention","ambient"], function(bot, message) {
-	var intro = "Yo <@"+message.user+">! You think you can give out the :key: to success but only I have the :key:. Listen up!";
+controller.hears(["major key", "major keys", ":key:", "key", "keys"], ["ambient"], function(bot, message) {
+	var intro = "Yo <@"+message.user+">! You think you can give out the :key: to success but only I have the :key:.";
 	bot.reply(message, intro);
-	replyRandomKey(bot, message);
 })	
+controller.hears(["khaled"], ["ambient"], function(bot, message) {
+  var intro = "<@"+message.user+"> you spoke my name?";
+  bot.reply(message, intro);
+})
+controller.hears(["dj"], ["ambient"], function(bot, message) {
+  var intro = "<@"+message.user+"> khaledbot is the one true DJ";
+  bot.reply(message, intro);
+})  
