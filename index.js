@@ -142,8 +142,6 @@ controller.on("bot_channel_join", function(bot, message) {
 })
 
 controller.on("direct_mention", function(bot, message) {
-
-
   if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
     var intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!";
     bot.reply(message, intro);
@@ -159,12 +157,9 @@ controller.on("direct_mention", function(bot, message) {
     bot.reply(message, intro);
     replyRandomKey(bot, message);
   }
-
-	
 })
 
 controller.on("mention", function(bot, message) {
-	
   if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
     var intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!";
     bot.reply(message, intro);
@@ -180,10 +175,7 @@ controller.on("mention", function(bot, message) {
     bot.reply(message, intro);
     replyRandomKey(bot, message);
   }
-  
 })
-
-
 
 controller.on("user_channel_join", function(bot, message) {
 	var intro = "Welcome <@"+message.user+">! Major :key: for success in this channel";
