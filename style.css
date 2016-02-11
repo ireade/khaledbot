@@ -85,10 +85,10 @@ a {
     color: inherit; 
 }
 
+.asterisk,
 small {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	display: block;
-	text-align: right;
 }
 strong {
 	font-weight: 600;
@@ -262,7 +262,6 @@ section.site-section {
 }
 
 .twitter-share-button {
-	margin-top: 5px;
 	margin-right: 7px;
 }
 
