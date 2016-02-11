@@ -115,6 +115,11 @@ controller.on("direct_message", function(bot, message) {
 
     replyRandomKey(bot, message);
 
+  } else if ( message.text.indexOf("thanks") > -1 | message.text.indexOf("thank you") > -1 ) {
+
+    var reply = "You're welcome. Bless up!"
+    bot.reply(message, reply);
+
   } else if ( message.text.indexOf("help") > -1 ) {
 
     var reply = "Looks like you need help. This is what I'm here for. You can send me any messages, and I'll reply with some major :key: :key:"
@@ -138,28 +143,44 @@ controller.on("bot_channel_join", function(bot, message) {
 
 controller.on("direct_mention", function(bot, message) {
 
-  var intro;
+
   if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
-    intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!"
+    var intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!";
+    bot.reply(message, intro);
+    replyRandomKey(bot, message);
+
+  } else if ( message.text.indexOf("thanks") > -1 | message.text.indexOf("thank you") > -1 ) {
+
+    var reply = "You're welcome. Bless up!"
+    bot.reply(message, reply);
+
   } else {
-    intro = personaliseIntro(message.user);
+    var intro = personaliseIntro(message.user);
+    bot.reply(message, intro);
+    replyRandomKey(bot, message);
   }
 
-	bot.reply(message, intro);
-	replyRandomKey(bot, message);
+	
 })
 
 controller.on("mention", function(bot, message) {
 	
-  var intro;
   if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
-    intro = "Hello <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!"
-  } else {
-    intro = personaliseIntro(message.user);
-  }
+    var intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!";
+    bot.reply(message, intro);
+    replyRandomKey(bot, message);
 
-	bot.reply(message, intro);
-	replyRandomKey(bot, message);
+  } else if ( message.text.indexOf("thanks") > -1 | message.text.indexOf("thank you") > -1 ) {
+
+    var reply = "You're welcome. Bless up!"
+    bot.reply(message, reply);
+
+  } else {
+    var intro = personaliseIntro(message.user);
+    bot.reply(message, intro);
+    replyRandomKey(bot, message);
+  }
+  
 })
 
 
