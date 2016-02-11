@@ -73,6 +73,8 @@ body {
     font-size: 1.6rem;
     line-height: 1.4;
     font-family: 'Playfair Display', serif;
+
+    
     color: rgb(50, 50, 50);
 
     cursor: url("key.png"), auto;
@@ -96,8 +98,22 @@ h1 {
 	font-size: 7rem;
 	margin-bottom: 10px;
 	font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
 }
-
+h1.site-title {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	display: block;
+	width: auto;
+	border: 5px solid #fff;
+	color: #fff;
+	padding: 5px 10px;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	font-weight: 700;
+}
 
 
 
@@ -116,6 +132,11 @@ h2 {
 	font-size: 2.5rem;
 	font-weight: 600;
 	margin-bottom: 20px;
+}
+
+.section-title {
+	display: block;
+	text-align: center;
 }
 
 
@@ -166,10 +187,6 @@ section.site-section {
 
 
 
-.not-supported {
-	color: red;
-	text-decoration: underline;
-}
 
 
 
@@ -236,56 +253,80 @@ section.site-section {
 	transform: translate(-50%, -50%);
 }
 
-.site-header {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	width: 90%;
-	max-width: 600px;
-	text-align: center;
-	border: 10px solid #ffd700;
-	background-color: rgba(255, 255, 255, 0.5);
-	padding: 20px;
-	color: #ffd700;
-}
 
 .twitter-share {
 	position: absolute;
 	top: 20px;
 	right: 20px;
+	text-align: right;
+}
+
+.twitter-share-button {
+	margin-top: 5px;
+	margin-right: 7px;
 }
 
 
-nav.down {
+
+
+.slack-box {
 	position: absolute;
-	bottom: 30px;
+	bottom: 100px;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
-	font-size: 2rem;
 
-	width: 0; 
-	height: 0; 
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	border-top: 20px solid #ffd700;
-	cursor: pointer;
+	border: 2px solid rgb(200,200, 200);
+	border-radius: 5px;
+	background-color: #fff;
+
+	height: 50px;
+	width: 80%;
+	max-width: 700px;
+
+	font-family: 'Montserrat', sans-serif;
+	color: rgb(100, 100, 100);
+	font-size: 1.4rem;
 }
 
-.current-browser-supports {
-	display: none;
+
+
+
+.plussign {
+	position: absolute;
+	left: 0;
+	height: 100%;
+	background-color: rgb(240, 240, 240);
+	border-right: 2px solid rgb(200,200, 200);
+	width: 50px;
+
+	color: rgb(200,200, 200);
+	text-align: center;
+	line-height: 50px;
+	font-size: 3rem;
 }
 
-@supports ( display: block ) {
-
-	.current-browser-supports {
-		display: block;
-	}
-
-	.current-browser-doesnt-support {
-		display: none;
-	}
-	
+.textbox {
+	display: inline-block;
+	padding-left: 60px;
+	line-height: 50px;
+	height: 50px;
+	position: relative;
 }
+.typing {
+	position: absolute;
+	bottom: -30px;
+	left: 60px;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.2rem;
+	font-style: italic;
+}
+
+
+
+
+
+
+
+
