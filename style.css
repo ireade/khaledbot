@@ -242,6 +242,10 @@ section.site-section {
     background-image: url('img/bg.png');
 }
 
+.demo {
+	width: 100%;
+}
+
 .video-container {
 	margin: 0 auto;
 	width: 90%;
@@ -279,8 +283,8 @@ section.site-section {
 	border-radius: 5px;
 	background-color: #fff;
 
-	height: 50px;
-	width: 80%;
+	min-height: 50px;
+	width: 90%;
 	max-width: 700px;
 
 	font-family: 'Montserrat', sans-serif;
@@ -301,15 +305,16 @@ section.site-section {
 
 	color: rgb(200,200, 200);
 	text-align: center;
-	line-height: 50px;
+	padding-top: 8px;
 	font-size: 3rem;
 }
 
 .textbox {
 	display: inline-block;
 	padding-left: 60px;
-	line-height: 50px;
-	height: 50px;
+	padding-top: 18px;
+	padding-right: 10px;
+	min-height: 50px;
 	position: relative;
 }
 .typing {
