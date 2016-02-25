@@ -78,11 +78,14 @@ var majorKeys = [
 
 
 
+var getRandomKey = function() {
+  var index = Math.floor(Math.random() * majorKeys.length);
+  return majorKeys[index];
+}
+
 
 var replyRandomKey = function(bot, message) {
-	var index = Math.floor(Math.random() * majorKeys.length);
-  var majorKey = majorKeys[index];
-  //var majorKey = "> " + majorKeys[index];
+	var majorKey = getRandomKey();
 	bot.reply(message, majorKey);
 }
 
@@ -100,6 +103,66 @@ var personaliseIntro = function(userID) {
 	var index = Math.floor(Math.random() * intros.length);
 	return intros[index]
 }
+
+
+
+var sendKeyToHandler = function(bot, message) {
+
+  var placeholder = message.text.split("send key to ")[1],
+      placeholder = placeholder.split(" in ");
+
+  var user = placeholder[0];
+  var channel = placeholder[1],
+      channel = channel.split("<#")[1],
+      channel = channel.split(">")[0];
+
+
+  bot.startConversation(message,function(err,convo) {
+
+      if ( !user | !channel ) {
+
+        bot.reply(message, "Sorry I didn't get that. If you want me to send a key to someone, say `send key to @username in #channel`");
+
+        convo.stop();
+
+      } else {
+
+        convo.ask("No problem! Do make sure I've been invited to that channel first though. \n Should I tell "+user+" you requested this? Say `yes` or `no`",function(response,convo) {
+
+          if ( response.text === 'yes' | response.text === 'Yes' ) {
+
+            bot.reply(message, "Will do! Check <#"+channel+">");
+            bot.say({
+              text: "Yo "+user + ", <@"+message.user+"> thinks you need a :key: right now, listen up! " + getRandomKey(),
+              channel: channel
+            });
+
+          } else {
+
+            bot.reply(message, "Sneaky! Check <#"+channel+">");
+            bot.say({
+              text: user + " " + getRandomKey(),
+              channel: channel
+            });
+
+          }
+
+          convo.stop();
+          
+
+        });
+
+      }
+      
+  })
+
+
+}
+
+
+
+
+
 
 
 
@@ -125,6 +188,10 @@ controller.on("direct_message", function(bot, message) {
     var reply = "Looks like you need help. This is what I'm here for. You can send me any messages, and I'll reply with some major :key: :key:"
     bot.reply(message, reply);
 
+  } else if ( message.text.indexOf("send key to") > -1 ) {
+
+    // do nothing, handled elsewhere
+
   } else {
 
     var index = Math.floor(Math.random() * majorKeys.length);
@@ -142,7 +209,9 @@ controller.on("bot_channel_join", function(bot, message) {
 })
 
 controller.on("direct_mention", function(bot, message) {
+
   if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
+
     var intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!";
     bot.reply(message, intro);
     replyRandomKey(bot, message);
@@ -152,15 +221,23 @@ controller.on("direct_mention", function(bot, message) {
     var reply = "You're welcome. Bless up!"
     bot.reply(message, reply);
 
+  } else if ( message.text.indexOf("send key to") > -1 ) {
+
+    sendKeyToHandler(bot, message);
+
   } else {
+
     var intro = personaliseIntro(message.user);
     bot.reply(message, intro);
     replyRandomKey(bot, message);
+
   }
 })
 
 controller.on("mention", function(bot, message) {
+
   if ( message.text.indexOf("hello") > -1 | message.text.indexOf("hi") > -1 | message.text.indexOf("hey") > -1 ) {
+
     var intro = "Greetings <@"+message.user+">, I'm khaledbot, here to deliver to you the major :key: to success in this Slack Team. Listen up!";
     bot.reply(message, intro);
     replyRandomKey(bot, message);
@@ -201,4 +278,27 @@ controller.hears(["khaled"], ["ambient"], function(bot, message) {
 controller.hears(["dj"], ["ambient"], function(bot, message) {
   var intro = "<@"+message.user+"> khaledbot is the one true DJ";
   bot.reply(message, intro);
-})  
+}) 
+controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
+
+  var laughing = [
+    "LOL", "Hilarious", ":joy:", ":laughing:", "Stay focused. It's work time.", "Hahahaha", "So funny!", "They don't want us to laugh"
+  ]
+
+  var index = Math.floor(Math.random() * laughing.length);
+  bot.reply(message, laughing[index]);
+}) 
+
+
+controller.hears(["send key to"], ["direct_message", "direct_metion"], function(bot, message) {
+
+  sendKeyToHandler(bot, message);
+
+}) 
+
+
+
+
+
+
+
