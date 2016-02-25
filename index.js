@@ -109,19 +109,19 @@ var personaliseIntro = function(userID) {
 var sendKeyToHandler = function(bot, message) {
 
   var placeholder = message.text.split("send key to ")[1],
-      placeholder = placeholder.split(" in ");
+      placeholder = placeholder ? placeholder.split(" in ") : false;
 
   var user = placeholder[0];
   var channel = placeholder[1],
-      channel = channel.split("<#")[1],
-      channel = channel.split(">")[0];
+      channel = channel ? channel.split("<#")[1] : false,
+      channel = channel ? channel.split(">")[0] || channel : false;
 
 
   bot.startConversation(message,function(err,convo) {
 
       if ( !user | !channel ) {
 
-        bot.reply(message, "Sorry I didn't get that. If you want me to send a key to someone, say `send key to @username in #channel`");
+        bot.reply(message, "Sorry I didn't get that. If you want me to send a key to someone, say `@khaledbot send key to @username in #channel`");
 
         convo.stop();
 
@@ -185,7 +185,7 @@ controller.on("direct_message", function(bot, message) {
 
   } else if ( message.text.indexOf("help") > -1 ) {
 
-    var reply = "Looks like you need help. This is what I'm here for. You can send me any messages, and I'll reply with some major :key: :key:"
+    var reply = "Looks like you need help. This is what I'm here for. You can send me any messages, and I'll reply with some major :key: :key: . Otherwise, go to http://khaledbot.com to get more info. Bless up!"
     bot.reply(message, reply);
 
   } else if ( message.text.indexOf("send key to") > -1 ) {
@@ -224,6 +224,11 @@ controller.on("direct_mention", function(bot, message) {
   } else if ( message.text.indexOf("send key to") > -1 ) {
 
     sendKeyToHandler(bot, message);
+
+  } else if ( message.text.indexOf("help") > -1 ) {
+
+    var reply = "Looks like you need help. This is what I'm here for. You can send me any messages, and I'll reply with some major :key: :key: . Otherwise, go to http://khaledbot.com to get more info. Bless up!"
+    bot.reply(message, reply);
 
   } else {
 
