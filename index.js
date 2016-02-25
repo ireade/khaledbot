@@ -85,23 +85,23 @@ var getRandomKey = function() {
 
 
 var replyRandomKey = function(bot, message) {
-	var majorKey = getRandomKey();
-	bot.reply(message, majorKey);
+  var majorKey = getRandomKey();
+  bot.reply(message, majorKey);
 }
 
 
 var personaliseIntro = function(userID) {
-	var username = "<@"+userID+">";
-	var intros = [
-		"Major :key: for "+username+"",
-		""+username+", this is a special :key: just for you",
-		"Hold up "+username+"! Major :key: for you",
-		""+username+", you're in need of a major :key:",
-		""+username+" listen up! Major :key: alert",
-		"Wait wait wait. "+username+", major :key: for you",
-	]
-	var index = Math.floor(Math.random() * intros.length);
-	return intros[index]
+  var username = "<@"+userID+">";
+  var intros = [
+    "Major :key: for "+username+"",
+    ""+username+", this is a special :key: just for you",
+    "Hold up "+username+"! Major :key: for you",
+    ""+username+", you're in need of a major :key:",
+    ""+username+" listen up! Major :key: alert",
+    "Wait wait wait. "+username+", major :key: for you",
+  ]
+  var index = Math.floor(Math.random() * intros.length);
+  return intros[index]
 }
 
 
@@ -199,13 +199,13 @@ controller.on("direct_message", function(bot, message) {
     bot.reply(message, majorKey);
 
   }
-	
+  
 })
 
 controller.on("bot_channel_join", function(bot, message) {
-	var intro = "I have arrived! Major :key: :key: :key: for the channel"
-	bot.reply(message, intro);
-	replyRandomKey(bot, message);
+  var intro = "I have arrived! Major :key: :key: :key: for the channel"
+  bot.reply(message, intro);
+  replyRandomKey(bot, message);
 })
 
 controller.on("direct_mention", function(bot, message) {
@@ -255,22 +255,22 @@ controller.on("mention", function(bot, message) {
 })
 
 controller.on("user_channel_join", function(bot, message) {
-	var intro = "Welcome <@"+message.user+">! Major :key: for success in this channel";
-	bot.reply(message, intro);
-	replyRandomKey(bot, message);
+  var intro = "Welcome <@"+message.user+">! Major :key: for success in this channel";
+  bot.reply(message, intro);
+  replyRandomKey(bot, message);
 })
 
 controller.on("user_group_join", function(bot, message) {
-	var intro = "Welcome <@"+message.user+">! Major :key: for success in this group";
-	bot.reply(message, intro);
-	replyRandomKey(bot, message);
+  var intro = "Welcome <@"+message.user+">! Major :key: for success in this group";
+  bot.reply(message, intro);
+  replyRandomKey(bot, message);
 })
 
 
 controller.hears(["major key", "major keys", ":key:", "key", "keys"], ["ambient"], function(bot, message) {
-	var intro = "Yo <@"+message.user+">! You think you can give out the :key: to success but only I have the :key:.";
-	bot.reply(message, intro);
-})	
+  var intro = "Yo <@"+message.user+">! You think you can give out the :key: to success but only I have the :key:.";
+  bot.reply(message, intro);
+})  
 controller.hears(["khaled"], ["ambient"], function(bot, message) {
   var intro = "<@"+message.user+"> you spoke my name?";
   bot.reply(message, intro);
@@ -295,10 +295,3 @@ controller.hears(["send key to"], ["direct_message", "direct_metion"], function(
   sendKeyToHandler(bot, message);
 
 }) 
-
-
-
-
-
-
-
