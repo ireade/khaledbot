@@ -296,7 +296,5 @@ controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
 
 
 controller.hears(["send key to"], ["direct_message", "direct_metion"], function(bot, message) {
-
   sendKeyToHandler(bot, message);
-
 }) 
