@@ -7,8 +7,6 @@ var controller = Botkit.slackbot({
 });
 
 
-var beepboop = require('beepboop-botkit').start(controller, {})
-
 if (token) {
   console.log("Starting in singl-team mode")
   controller.spawn({
