@@ -18,7 +18,7 @@ if (token) {
   });
 } else {
   console.log("Starting in Beep Boop multi-team mode")
-  require('beepboop-botkit').start(controller, {})
+  require('beepboop-botkit').start(controller, { debug: true })
 }
 
 // Major Keys from http://khaledipsum.com/
