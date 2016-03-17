@@ -285,11 +285,9 @@ controller.hears(["dj"], ["ambient"], function(bot, message) {
   bot.reply(message, intro);
 }) 
 controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
-
   var laughing = [
     "LOL", "Hilarious", ":joy:", ":laughing:", "Stay focused. It's work time.", "Hahahaha", "So funny!", "They don't want us to laugh"
   ]
-
   var index = Math.floor(Math.random() * laughing.length);
   bot.reply(message, laughing[index]);
 }) 
