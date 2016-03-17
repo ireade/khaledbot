@@ -10,7 +10,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "beepboop-botkit": "0.0.4",
+    "beepboop-botkit": "0.0.5",
     "botkit": "0.0.11"
   },
   "engines": {
