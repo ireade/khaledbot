@@ -1,6 +1,8 @@
 var Botkit = require("botkit");
+var beepboop = require("beepboop-botkit");
 
-var token = process.env.SLACK_TOKEN
+var token = process.env.SLACK_TOKEN;
+
 if (!token) {
   console.error('SLACK_TOKEN is required!')
   process.exit(1)
@@ -10,13 +12,17 @@ var controller = Botkit.slackbot({
   debug: false
 });
 
-controller.spawn({
-  token: token
-}).startRTM(function(err,bot,payload) {
-  if (err) {
-    throw new Error(err);
-  }
-});
+// controller.spawn({
+//   token: token
+// }).startRTM(function(err,bot,payload) {
+//   if (err) {
+//     throw new Error(err);
+//   }
+// });
+
+beepboop.start(controller, {
+  debug: true
+})
 
 
 // Major Keys from http://khaledipsum.com/
@@ -288,8 +294,14 @@ controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
   var laughing = [
     "LOL", "Hilarious", ":joy:", ":laughing:", "Stay focused. It's work time.", "Hahahaha", "So funny!", "They don't want us to laugh"
   ]
-  var index = Math.floor(Math.random() * laughing.length);
-  bot.reply(message, laughing[index]);
+
+  var r = Math.floor(Math.random() * 4);
+
+  if ( r > 1 ) {
+    var index = Math.floor(Math.random() * laughing.length);
+    bot.reply(message, laughing[index]);
+  }
+  
 }) 
 
 
