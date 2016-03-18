@@ -12,17 +12,14 @@ var controller = Botkit.slackbot({
   debug: false
 });
 
-// controller.spawn({
-//   token: token
-// }).startRTM(function(err,bot,payload) {
-//   if (err) {
-//     throw new Error(err);
-//   }
-// });
+controller.spawn({
+  token: token
+}).startRTM(function(err,bot,payload) {
+  if (err) {
+    throw new Error(err);
+  }
+});
 
-beepboop.start(controller, {
-  debug: true
-})
 
 
 // Major Keys from http://khaledipsum.com/
