@@ -8,7 +8,7 @@ var controller = Botkit.slackbot({
 
 
 if (token) {
-  console.log("Starting in singl-team mode")
+  console.log("Starting in single-team mode")
   controller.spawn({
     token: token
   }).startRTM(function(err,bot,payload) {
