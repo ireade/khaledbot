@@ -1,25 +1,25 @@
 var Botkit = require("botkit");
 var beepboop = require("beepboop-botkit");
 
-var token = process.env.SLACK_TOKEN;
-
-if (!token) {
-  console.error('SLACK_TOKEN is required!')
-  process.exit(1)
-}
+var token = process.env.SLACK_TOKEN
 
 var controller = Botkit.slackbot({
   debug: false
 });
 
-controller.spawn({
-  token: token
-}).startRTM(function(err,bot,payload) {
-  if (err) {
-    throw new Error(err);
-  }
-});
-
+if (token) {
+  console.log("Starting in single-team mode")
+  controller.spawn({
+    token: token
+  }).startRTM(function(err,bot,payload) {
+    if (err) {
+      throw new Error(err);
+    }
+  });
+} else {
+  console.log("Starting in Beep Boop multi-team mode")
+  require('beepboop-botkit').start(controller, { debug: true })
+}
 
 
 // Major Keys from http://khaledipsum.com/
@@ -151,12 +151,12 @@ var sendKeyToHandler = function(bot, message) {
           }
 
           convo.stop();
-          
+
 
         });
 
       }
-      
+
   })
 
 
@@ -202,7 +202,7 @@ controller.on("direct_message", function(bot, message) {
     bot.reply(message, majorKey);
 
   }
-  
+
 })
 
 controller.on("bot_channel_join", function(bot, message) {
@@ -278,7 +278,7 @@ controller.on("user_group_join", function(bot, message) {
 controller.hears(["major key", "major keys", ":key:", "key", "keys"], ["ambient"], function(bot, message) {
   var intro = "Yo <@"+message.user+">! You think you can give out the :key: to success but only I have the :key:.";
   bot.reply(message, intro);
-})  
+})
 controller.hears(["khaled"], ["ambient"], function(bot, message) {
   var intro = "<@"+message.user+"> you spoke my name?";
   bot.reply(message, intro);
@@ -286,7 +286,7 @@ controller.hears(["khaled"], ["ambient"], function(bot, message) {
 controller.hears(["dj"], ["ambient"], function(bot, message) {
   var intro = "<@"+message.user+"> khaledbot is the one true DJ";
   bot.reply(message, intro);
-}) 
+})
 controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
   var laughing = [
     "LOL", "Hilarious", ":joy:", ":laughing:", "Stay focused. It's work time.", "Hahahaha", "So funny!", "They don't want us to laugh"
@@ -304,4 +304,4 @@ controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
 
 controller.hears(["send key to"], ["direct_message", "direct_metion"], function(bot, message) {
   sendKeyToHandler(bot, message);
-}) 
+})
