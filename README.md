@@ -27,3 +27,4 @@ Download/clone this repository and host @khaledbot on your own server or locally
 - The list of major keys is from [khaledipsum.com](http://khaledipsum.com)
 - Bot created by [Ire Aderinokun](http://twitter.com/ireaderinokun)
 - Deployed using [Beep Boop](https://beepboophq.com/)
+
