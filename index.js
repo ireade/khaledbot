@@ -275,7 +275,7 @@ controller.on("user_group_join", function(bot, message) {
 })
 
 
-controller.hears(["major key", "major keys", ":key:", "key", "keys"], ["ambient"], function(bot, message) {
+controller.hears(["major key", "major keys", ":key:", " key", " keys"], ["ambient"], function(bot, message) {
   var intro = "Yo <@"+message.user+">! You think you can give out the :key: to success but only I have the :key:.";
   bot.reply(message, intro);
 })
@@ -291,7 +291,6 @@ controller.hears(["lol", "lmao", "haha"], ["ambient"], function(bot, message) {
   var laughing = [
     "LOL", "Hilarious", ":joy:", ":laughing:", "Stay focused. It's work time.", "Hahahaha", "So funny!", "They don't want us to laugh"
   ]
-
   var r = Math.floor(Math.random() * 4);
 
   if ( r > 1 ) {
